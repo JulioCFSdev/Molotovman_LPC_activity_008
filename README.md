@@ -1,6 +1,8 @@
 # Molotovman - Game
 
 Jogo baseado no Super Bomberman 3 de SNES desenvolvido por alunos da Universidade do Estado do Amazonas, do curso de Sistemas de Informação. Desenvolvedores: Arthur Uguen de Mendonça, Diana de Oliveira, Guilherme Tapajós, Johann Mayos e Júlio César Ferreira.
+![Tela de referência do jogo](https://user-images.githubusercontent.com/90109601/161894357-73ca4d0f-95fc-4257-b51f-a53bef8c6b1f.jpg)
+
 
  # Tela do jogo
   De modo geral, há cinco telas no game:
