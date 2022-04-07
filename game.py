@@ -1,5 +1,5 @@
 import pygame
-from Config import Constants, game_loop, screen, Colors
+from Config import Constants, game_loop, screen, Colors, background
 from main_screen import Main_screen
 from game_object import Objects
 
@@ -16,7 +16,10 @@ class Game:
         pass
 
     def game_draw(self):
+        screen.blit(background, (0, 0))
         Objects.Draws.draw_arenabrk(Objects.Draws)
+        Objects.Draws.draw_wallbrk(Objects.Draws)
+
 
     def game_loop(self):
         while game_loop:

@@ -18,3 +18,4 @@ class Constants:
 
 game_loop = True
 screen = pygame.display.set_mode(Constants.SCREEN_SIZE)
+background = pygame.image.load("sprites/Backgound.png")
