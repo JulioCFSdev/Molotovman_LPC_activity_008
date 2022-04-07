@@ -12,8 +12,9 @@ class Colors:
     YELLOW = (255, 195, 0)
 
 class Constants:
+    FONT = "img/upheavtt.ttf"
     CLOCK_TICK = 60
-    SCREEN_SIZE = (1000, 700)
+    SCREEN_SIZE = (1000, 800)
 
 game_loop = True
 screen = pygame.display.set_mode(Constants.SCREEN_SIZE)
