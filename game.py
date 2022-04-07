@@ -1,5 +1,5 @@
 import pygame
-from Config import Constants, game_loop, screen,Colors
+from Config import Constants, game_loop, screen, Colors
 from main_screen import Main_screen
 from game_object import Objects
 
