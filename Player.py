@@ -15,6 +15,6 @@ class American:
     def __init__(self, velocity):
         self.velocity = velocity
         self.american_soldier = pygame.image.load("sprites\Player\Player_1_front.png")
-        screen.blit(self.american_soldier, (900, 700))
+        screen.blit(self.american_soldier, (850, 650))
 
 
