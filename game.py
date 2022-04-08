@@ -22,8 +22,8 @@ class Game:
         screen.blit(background, (0, 0))
         Objects.Draws.draw_arenabrk(Objects.Draws)
         Objects.Draws.draw_wallbrk(Objects.Draws)
-        Soviet(3)
-        American(3)
+        Objects.Draws.draw_soviet_player(Objects.Draws)
+        Objects.Draws.draw_american_player(Objects.Draws)
 
 
     def game_loop(self):

@@ -1,6 +1,7 @@
 import pygame
 from Brick import Bricks
 from Config import screen
+from mobile_game_object import Draw_Players
 
 
 
@@ -38,3 +39,9 @@ class Objects:
             for i in range(0, 50, 50):
                 for e in range(0, 150, 50):
                     screen.blit(Bricks.images(Bricks)[1], (450 + e, 50 + i))
+
+        def draw_soviet_player(self):
+            Draw_Players.draw_soviet(Draw_Players)
+
+        def draw_american_player(self):
+            Draw_Players.draw_american(Draw_Players)

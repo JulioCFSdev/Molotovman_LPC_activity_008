@@ -5,16 +5,14 @@ pygame.init()
 
 class Soviet:
 
-    def __init__(self,velocity):
-        self.velocity = velocity
-        self.soviet_soldier = pygame.image.load("sprites\Player\Player_1_front.png")
-        screen.blit(self.soviet_soldier,(50,50))
+    def soviet_soldier(self):
+        soviet_soldier = pygame.image.load("sprites\Player\Player_1_front.png")
+        return (soviet_soldier)
 
 
 class American:
-    def __init__(self, velocity):
-        self.velocity = velocity
-        self.american_soldier = pygame.image.load("sprites\Player\Player_1_front.png")
-        screen.blit(self.american_soldier, (850, 650))
+    def american_soldier(self):
+        american_soldier = pygame.image.load("sprites\Player\Player_1_front.png")
+        return (american_soldier)
 
 
