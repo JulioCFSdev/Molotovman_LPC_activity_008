@@ -1,5 +1,5 @@
 import pygame
-from Config import screen
+
 
 pygame.init()
 

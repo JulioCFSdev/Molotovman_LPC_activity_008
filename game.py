@@ -1,30 +1,37 @@
 import pygame
-
-import Player
 from Config import Constants, game_loop, screen, Colors, background
 from main_screen import Main_screen
 from game_object import Objects
-from Player import Soviet, American
 from mobile_game_object import Draw_Players
 
 pygame.init()
 pygame.display.set_caption("MolotovBoy - Cold War")
 
-add_x = 0
-add_y = 0
+add_xs = 0
+add_ys = 0
+add_xa = 0
+add_ya = 0
 
 class Game:
 
     def game_input(self):
-        global add_x, add_y
+        global add_xs, add_ys, add_xa, add_ya
         if pygame.key.get_pressed()[pygame.K_w]:
-            add_y -= 10
+            add_ys -= 20
         if pygame.key.get_pressed()[pygame.K_s]:
-            add_y += 10
+            add_ys += 20
         if pygame.key.get_pressed()[pygame.K_a]:
-            add_x -= 10
+            add_xs -= 20
         if pygame.key.get_pressed()[pygame.K_d]:
-            add_x += 10
+            add_xs += 20
+        if pygame.key.get_pressed()[pygame.K_UP]:
+            add_ya -= 20
+        if pygame.key.get_pressed()[pygame.K_DOWN]:
+            add_ya += 20
+        if pygame.key.get_pressed()[pygame.K_RIGHT]:
+            add_xa += 20
+        if pygame.key.get_pressed()[pygame.K_LEFT]:
+            add_xa -= 20
 
 
     def game_process(self):
@@ -34,8 +41,8 @@ class Game:
         screen.blit(background, (0, 0))
         Objects.Draws.draw_arenabrk(Objects.Draws)
         Objects.Draws.draw_wallbrk(Objects.Draws)
-        Draw_Players.draw_soviet(Draw_Players, add_x, add_y)
-        Objects.Draws.draw_american_player(Objects.Draws)
+        Draw_Players.draw_soviet(Draw_Players, add_xs, add_ys)
+        Draw_Players.draw_american(Draw_Players, add_xa, add_ya)
 
 
     def game_loop(self):
