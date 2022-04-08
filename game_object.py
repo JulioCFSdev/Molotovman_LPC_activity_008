@@ -2,6 +2,7 @@ import pygame
 from Brick import Bricks
 from Config import screen
 from mobile_game_object import Draw_Players
+from Bomb import Bomb
 
 
 
@@ -45,3 +46,6 @@ class Objects:
 
         def draw_american_player(self):
             Draw_Players.draw_american(Draw_Players)
+
+        def draw_bomb( pos_x_s, pos_y_s):
+            screen.blit(Bomb().img_dynamite, (pos_x_s + 100, pos_y_s + 100))

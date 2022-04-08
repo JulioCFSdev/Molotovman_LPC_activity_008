@@ -3,6 +3,7 @@ from Config import Constants, game_loop, screen, Colors, background
 from main_screen import Main_screen
 from game_object import Objects
 from mobile_game_object import Draw_Players
+from Bomb import Bomb
 
 pygame.init()
 pygame.display.set_caption("MolotovBoy - Cold War")
@@ -11,11 +12,13 @@ add_xs = 0
 add_ys = 0
 add_xa = 0
 add_ya = 0
+bomb_ativation = False
+cooldown_bomb = 0
 
 class Game:
 
     def game_input(self):
-        global add_xs, add_ys, add_xa, add_ya
+        global add_xs, add_ys, add_xa, add_ya, bomb_ativation, pos_bomb
         if pygame.key.get_pressed()[pygame.K_w]:
             add_ys -= 20
         if pygame.key.get_pressed()[pygame.K_s]:
@@ -24,6 +27,10 @@ class Game:
             add_xs -= 20
         if pygame.key.get_pressed()[pygame.K_d]:
             add_xs += 20
+        if pygame.key.get_pressed()[pygame.K_e]:
+            bomb_ativation = True
+            pos_bomb = [add_xs, add_ys]
+            Bomb().create_bomb(add_xs, add_ys)
         if pygame.key.get_pressed()[pygame.K_UP]:
             add_ya -= 20
         if pygame.key.get_pressed()[pygame.K_DOWN]:
@@ -43,6 +50,9 @@ class Game:
         Objects.Draws.draw_wallbrk(Objects.Draws)
         Draw_Players.draw_soviet(Draw_Players, add_xs, add_ys)
         Draw_Players.draw_american(Draw_Players, add_xa, add_ya)
+        if bomb_ativation:
+            Objects.Draws.draw_bomb(pos_bomb[0], pos_bomb[1])
+
 
 
     def game_loop(self):
