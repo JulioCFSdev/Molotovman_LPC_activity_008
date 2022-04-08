@@ -1,7 +1,10 @@
 import pygame
+
+import Player
 from Config import Constants, game_loop, screen, Colors, background
 from main_screen import Main_screen
 from game_object import Objects
+from Player import Soviet, American
 
 pygame.init()
 pygame.display.set_caption("MolotovBoy - Cold War")
@@ -19,6 +22,8 @@ class Game:
         screen.blit(background, (0, 0))
         Objects.Draws.draw_arenabrk(Objects.Draws)
         Objects.Draws.draw_wallbrk(Objects.Draws)
+        Soviet(3)
+        American(3)
 
 
     def game_loop(self):
@@ -36,10 +41,6 @@ class Game:
 
             pygame.time.Clock().tick(Constants.CLOCK_TICK)
             pygame.display.update()
-
-            
-
-
 
 
 Main_screen.menu()
