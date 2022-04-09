@@ -17,6 +17,7 @@ class Constants:
     SCREEN_SIZE = (950, 750)
     BOMB_DURATION = 20
     EXPLOSION_DURATION = 7
+    COOLDOWN_BOMB = BOMB_DURATION + EXPLOSION_DURATION
 
 game_loop = True
 screen = pygame.display.set_mode(Constants.SCREEN_SIZE)

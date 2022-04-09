@@ -14,6 +14,7 @@ add_xa = 0
 add_ya = 0
 bomb_ativation = False
 explosion_ativation = False
+cooldown_bomb = 0
 # Last_key_pressed_soviet = W -> 1
 # Last_key_pressed_soviet = S -> 0
 # Last_key_pressed_soviet = A -> 2
@@ -26,14 +27,14 @@ last_key_pressed_s = 0
 last_key_pressed_a = 0
 
 class Game:
-
+    cooldown_bomb = 0
     def __init__(self):
         self.bomb_duration = 0
         self.explosion_duration = 0
 
 
     def game_input(self):
-        global add_xs, add_ys, add_xa, add_ya, bomb_ativation, pos_bomb, last_key_pressed_s, last_key_pressed_a, list_Bomb
+        global add_xs, add_ys, add_xa, add_ya, bomb_ativation, pos_bomb, last_key_pressed_s, last_key_pressed_a, list_Bomb, cooldown_bomb
         if pygame.key.get_pressed()[pygame.K_w]:
             add_ys -= 20
             last_key_pressed_s = 1
@@ -46,7 +47,8 @@ class Game:
         if pygame.key.get_pressed()[pygame.K_d]:
             add_xs += 20
             last_key_pressed_s = 3
-        if pygame.key.get_pressed()[pygame.K_e]:
+        if pygame.key.get_pressed()[pygame.K_e] and cooldown_bomb <= 0:
+            cooldown_bomb = Constants.COOLDOWN_BOMB
             bomb_ativation = True
             if last_key_pressed_s == 0:
                 pos_bomb = [add_xs, add_ys + 50]
@@ -81,7 +83,7 @@ class Game:
         pass
 
     def game_draw(self):
-        global explosion_range, explosion_ativation
+        global explosion_range, explosion_ativation, cooldown_bomb
         screen.blit(background, (0, 0))
         Objects.Draws.draw_arenabrk(Objects.Draws)
         Objects.Draws.draw_wallbrk(Objects.Draws)
@@ -90,6 +92,7 @@ class Game:
         if bomb_ativation and self.bomb_duration != 0:
             Objects.Draws.draw_bomb(pos_bomb[0], pos_bomb[1])
             self.bomb_duration -= 1
+            cooldown_bomb -= 1
             if self.bomb_duration == 0:
                 explosion_ativation = True
                 explosion_range = Bomb().create_explosion(add_xs, add_ys)
@@ -98,6 +101,7 @@ class Game:
         if explosion_ativation and self.explosion_duration != 0:
             Objects.Draws.draw_explosion(pos_bomb[0], pos_bomb[1])
             self.explosion_duration -= 1
+            cooldown_bomb -= 1
             if self.explosion_duration == 0:
                 explosion_ativation = False
 
