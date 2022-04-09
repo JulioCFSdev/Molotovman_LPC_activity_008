@@ -1,5 +1,5 @@
 import pygame
-from Config import Constants, game_loop, screen, Colors, background
+from Config import Constants, game_loop, screen, Colors, background, time_counter, time_text
 from main_screen import Main_screen
 from game_object import Objects
 from mobile_game_object import Draw_Players
@@ -7,6 +7,7 @@ from Bomb import Bomb
 
 pygame.init()
 pygame.display.set_caption("MolotovBoy - Cold War")
+pygame.time.set_timer(pygame.USEREVENT, 120)
 
 add_xs = 0
 add_ys = 0
@@ -27,7 +28,10 @@ last_key_pressed_s = 0
 last_key_pressed_a = 0
 
 class Game:
+    global time_game, time_text
     cooldown_bomb = 0
+    time_game = time_counter
+    time_text = time_text
     def __init__(self):
         self.bomb_duration = 0
         self.explosion_duration = 0
@@ -80,7 +84,14 @@ class Game:
 
 
     def game_process(self):
-        pass
+        global time_game, time_text
+        for event in pygame.event.get():
+            if event.type == pygame.USEREVENT:
+                time_game -= 1
+                time_text = str(time_game).rjust(3) if time_game > 0 else 'Times Over'
+            if time_text == 'Times Over':
+                game_over_text = Constants.PYFONT.render("GAME OVER", True, Colors.BLACK)
+                screen.blit(game_over_text, (Constants.SCREEN_SIZE[0] / 2 - 100, Constants.SCREEN_SIZE[1] / 2))
 
     def game_draw(self):
         global explosion_range, explosion_ativation, cooldown_bomb
@@ -89,6 +100,7 @@ class Game:
         Objects.Draws.draw_wallbrk(Objects.Draws)
         Draw_Players.draw_soviet(Draw_Players, add_xs, add_ys, last_key_pressed_s)
         Draw_Players.draw_american(Draw_Players, add_xa, add_ya, last_key_pressed_a)
+        screen.blit(Constants.PYFONT.render(time_text, True, Colors.BLACK), (Constants.SCREEN_SIZE[0] / 2, 5))
         if bomb_ativation and self.bomb_duration != 0:
             Objects.Draws.draw_bomb(pos_bomb[0], pos_bomb[1])
             self.bomb_duration -= 1
@@ -120,9 +132,9 @@ class Game:
                     pygame.quit()
                     exit()
 
+            
+            pygame.display.flip()
             pygame.time.Clock().tick(Constants.CLOCK_TICK)
-            pygame.display.update()
-
 
 Main_screen.menu()
 Game().game_loop()

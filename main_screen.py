@@ -4,9 +4,8 @@ from Config import Colors, Constants, screen
 class Main_screen():
     def menu():
         global menu_stats
-        font = pygame.font.Font(Constants.FONT, 50)
-        play_txt = font.render("Play", True, Colors.BLACK)
-        quit_txt = font.render("Quit", True, Colors.BLACK)
+        play_txt = Constants.PYFONT.render("Play", True, Colors.BLACK)
+        quit_txt = Constants.PYFONT.render("Quit", True, Colors.BLACK)
         menu_stats = True
         click = False
 
