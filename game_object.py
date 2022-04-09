@@ -54,6 +54,9 @@ class Objects:
         def draw_bomb(pos_x_s, pos_y_s):
             screen.blit(bomb.img_dynamite, (pos_x_s + 50, pos_y_s + 50))
 
+        def draw_exploding_bomb(pos_x_s, pos_y_s):
+            screen.blit(bomb.img_dynamite_exploding,(pos_x_s + 50, pos_y_s + 50))
+
         def draw_explosion(pos_x_s, pos_y_s):
             screen.blit(bomb.explosion_up, (pos_x_s + 50, pos_y_s))
             screen.blit(bomb.explosion_center, (pos_x_s + 50, pos_y_s + 50))

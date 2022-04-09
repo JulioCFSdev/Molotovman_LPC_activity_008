@@ -14,5 +14,5 @@ class Draw_Players:
 
     def draw_american(self, add_x, add_y, last_key_pressed):
         pos_x_a = 850 + add_x
-        pos_y_a = 650 + add_y
+        pos_y_a = 630 + add_y
         screen.blit(American.american_soldier(American, last_key_pressed),(pos_x_a, pos_y_a))
