@@ -85,9 +85,9 @@ class Game:
         pass
 
     def wall_limits_soviet(self):
-        global add_xs, add_ys, add_xa, add_ya
+        global add_xs, add_ys
 
-        if add_xs <= 0:
+        if add_xs < 0:
             add_xs = 0
 
         if add_xs >= 800:
@@ -98,6 +98,24 @@ class Game:
 
         if add_ys <= 0:
             add_ys = 0
+
+    def wall_limits_american(self):
+        global add_xa, add_ya
+
+        if add_ya >= 0:
+            add_ya = 0
+
+        if add_ya <= -595:
+            add_ya = -595
+
+        if add_xa >= 0:
+            add_xa = 0
+
+        if add_xa <= -800:
+            add_xa = -800
+
+
+
 
 
     def game_draw(self):
@@ -132,6 +150,7 @@ class Game:
             Game.game_process(Game)
             Game.game_draw(Game)
             Game.wall_limits_soviet(Game)
+            Game.wall_limits_american(Game)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
