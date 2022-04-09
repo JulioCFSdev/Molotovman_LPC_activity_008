@@ -15,6 +15,7 @@ class Constants:
     FONT = "img/upheavtt.ttf"
     CLOCK_TICK = 60
     SCREEN_SIZE = (950, 750)
+    COOLDOWN_BOMB = 20
 
 game_loop = True
 screen = pygame.display.set_mode(Constants.SCREEN_SIZE)

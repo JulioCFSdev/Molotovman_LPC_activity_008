@@ -14,20 +14,15 @@ class Objects:
         def draw_arenabrk(self):
             for e in range(0, 1050, 50):
                 screen.blit(Bricks.images(Bricks)[0], (e, 0))
-                self.brick_coord.append((e, 0))
             for e in range(0, 1050, 50):
                 screen.blit(Bricks.images(Bricks)[0], (e, 700))
-                self.brick_coord.append((e, 700))
             for e in range(0, 800, 50):
                 screen.blit(Bricks.images(Bricks)[0], (0, e))
-                self.brick_coord.append((0, e))
             for e in range(0, 800, 50):
                 screen.blit(Bricks.images(Bricks)[0], (900, e))
-                self.brick_coord.append((900, e))
             for i in range(0, 600, 100):
                 for e in range(0, 700, 100):
                     screen.blit(Bricks.images(Bricks)[0], (150 + e, 100 + i))
-                    self.brick_coord.append((150 + e, 100 + i))
 
         def draw_wallbrk(self):
             for i in range(0, 500, 100):
@@ -56,4 +51,4 @@ class Objects:
             Draw_Players.draw_american(Draw_Players)
 
         def draw_bomb( pos_x_s, pos_y_s):
-            screen.blit(Bomb().img_dynamite, (pos_x_s + 100, pos_y_s + 100))
+            screen.blit(Bomb().img_dynamite, (pos_x_s + 50, pos_y_s + 50))

@@ -9,4 +9,4 @@ class Bomb:
 
 
     def create_bomb(self, pos_x_s, pos_y_s):
-        bomb = pygame.Rect(pos_x_s + 50, pos_y_s + 50, 50, 50)
+        bomb = pygame.Rect(pos_x_s + 50, pos_y_s + 100, 45, 45)
