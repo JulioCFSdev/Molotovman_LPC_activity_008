@@ -18,6 +18,7 @@ class Game:
         global add_xs, add_ys, add_xa, add_ya
         if pygame.key.get_pressed()[pygame.K_w]:
             add_ys -= 20
+            
         if pygame.key.get_pressed()[pygame.K_s]:
             add_ys += 20
         if pygame.key.get_pressed()[pygame.K_a]:

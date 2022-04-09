@@ -12,7 +12,7 @@ class Soviet:
 
 class American:
     def american_soldier(self):
-        american_soldier = pygame.image.load("sprites/Player/Player_1_front.png")
+        american_soldier = pygame.image.load("sprites/Player/Player_usa_front.png")
         return (american_soldier)
 
 
