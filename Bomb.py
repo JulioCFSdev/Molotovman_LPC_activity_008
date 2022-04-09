@@ -5,7 +5,7 @@ from mobile_game_object import Draw_Players
 
 class Bomb:
     def __init__(self):
-        self.img_dynamite = pygame.image.load("sprites/Dynamite_normal.png")
+        self.img_dynamite = pygame.image.load("sprites/Explosion/Dynamite_normal.png")
 
 
     def create_bomb(self, pos_x_s, pos_y_s):

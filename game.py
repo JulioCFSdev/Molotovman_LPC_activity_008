@@ -13,11 +13,11 @@ add_ys = 0
 add_xa = 0
 add_ya = 0
 bomb_ativation = False
-last_key_pressed = 0
-# Last key_pressed = W -> 1
-# Last key_pressed = S -> 0
-# Last key_pressed = A -> 2
-# Last key_pressed = D -> 3
+last_key_pressed_s = 0
+# Last_key_pressed_soviet = W -> 1
+# Last_key_pressed_soviet = S -> 0
+# Last_key_pressed_soviet = A -> 2
+# Last_key_pressed_soviet = D -> 3
 
 class Game:
 
@@ -26,28 +26,28 @@ class Game:
 
 
     def game_input(self):
-        global add_xs, add_ys, add_xa, add_ya, bomb_ativation, pos_bomb, last_key_pressed
+        global add_xs, add_ys, add_xa, add_ya, bomb_ativation, pos_bomb, last_key_pressed_s
         if pygame.key.get_pressed()[pygame.K_w]:
             add_ys -= 20
-            last_key_pressed = 1
+            last_key_pressed_s = 1
         if pygame.key.get_pressed()[pygame.K_s]:
             add_ys += 20
-            last_key_pressed = 0
+            last_key_pressed_s = 0
         if pygame.key.get_pressed()[pygame.K_a]:
             add_xs -= 20
-            last_key_pressed = 2
+            last_key_pressed_s = 2
         if pygame.key.get_pressed()[pygame.K_d]:
             add_xs += 20
-            last_key_pressed = 3
+            last_key_pressed_s = 3
         if pygame.key.get_pressed()[pygame.K_e]:
             bomb_ativation = True
-            if last_key_pressed == 0:
+            if last_key_pressed_s == 0:
                 pos_bomb = [add_xs, add_ys + 50]
-            elif last_key_pressed == 1:
+            elif last_key_pressed_s == 1:
                 pos_bomb = [add_xs, add_ys - 50]
-            elif last_key_pressed == 2:
+            elif last_key_pressed_s == 2:
                 pos_bomb = [add_xs - 50, add_ys]
-            elif last_key_pressed == 3:
+            elif last_key_pressed_s == 3:
                 pos_bomb = [add_xs + 50, add_ys]
             self.cooldown_bomb = Constants.COOLDOWN_BOMB
             Bomb().create_bomb(add_xs, add_ys)
@@ -68,7 +68,7 @@ class Game:
         screen.blit(background, (0, 0))
         Objects.Draws.draw_arenabrk(Objects.Draws)
         Objects.Draws.draw_wallbrk(Objects.Draws)
-        Draw_Players.draw_soviet(Draw_Players, add_xs, add_ys, last_key_pressed)
+        Draw_Players.draw_soviet(Draw_Players, add_xs, add_ys, last_key_pressed_s)
         Draw_Players.draw_american(Draw_Players, add_xa, add_ya)
         if bomb_ativation and self.cooldown_bomb != 0:
             Objects.Draws.draw_bomb(pos_bomb[0], pos_bomb[1])
