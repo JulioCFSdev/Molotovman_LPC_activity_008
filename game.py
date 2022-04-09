@@ -27,6 +27,7 @@ last_key_pressed_s = 0
 # Last_key_pressed_american = right -> 3
 last_key_pressed_a = 0
 
+
 class Game:
     global time_game, time_text
     cooldown_bomb = 0
@@ -93,6 +94,40 @@ class Game:
                 game_over_text = Constants.PYFONT.render("GAME OVER", True, Colors.BLACK)
                 screen.blit(game_over_text, (Constants.SCREEN_SIZE[0] / 2 - 100, Constants.SCREEN_SIZE[1] / 2))
 
+    def wall_limits_soviet(self):
+        global add_xs, add_ys
+
+        if add_xs < 0:
+            add_xs = 0
+
+        if add_xs >= 800:
+            add_xs = 800
+
+        if add_ys >= 570:
+            add_ys = 570
+
+        if add_ys <= 0:
+            add_ys = 0
+
+    def wall_limits_american(self):
+        global add_xa, add_ya
+
+        if add_ya >= 0:
+            add_ya = 0
+
+        if add_ya <= -595:
+            add_ya = -595
+
+        if add_xa >= 0:
+            add_xa = 0
+
+        if add_xa <= -800:
+            add_xa = -800
+
+
+
+
+
     def game_draw(self):
         global explosion_range, explosion_ativation, cooldown_bomb
         screen.blit(background, (0, 0))
@@ -108,16 +143,13 @@ class Game:
             if self.bomb_duration == 0:
                 explosion_ativation = True
                 explosion_range = Bomb().create_explosion(add_xs, add_ys)
-                
-            
+
         if explosion_ativation and self.explosion_duration != 0:
             Objects.Draws.draw_explosion(pos_bomb[0], pos_bomb[1])
             self.explosion_duration -= 1
             cooldown_bomb -= 1
             if self.explosion_duration == 0:
                 explosion_ativation = False
-
-
 
     def game_loop(self):
         while game_loop:
@@ -126,6 +158,8 @@ class Game:
             Game.game_input(Game)
             Game.game_process(Game)
             Game.game_draw(Game)
+            Game.wall_limits_soviet(Game)
+            Game.wall_limits_american(Game)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
