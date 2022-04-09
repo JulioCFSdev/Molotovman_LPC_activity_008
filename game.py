@@ -51,11 +51,15 @@ class Game:
             if last_key_pressed_s == 0:
                 pos_bomb = [add_xs, add_ys + 50]
             elif last_key_pressed_s == 1:
-                pos_bomb = [add_xs, add_ys - 50]
+                pos_bomb = [add_xs, add_ys]
             elif last_key_pressed_s == 2:
-                pos_bomb = [add_xs - 50, add_ys]
+                pos_bomb = [add_xs - 50, add_ys + 50]
             elif last_key_pressed_s == 3:
-                pos_bomb = [add_xs + 50, add_ys]
+                pos_bomb = [add_xs + 50, add_ys + 50]
+
+            pos_bomb[0] = (pos_bomb[0]//50) * 50
+            pos_bomb[1] = (pos_bomb[1]//50) * 50
+
             self.bomb_duration = Constants.BOMB_DURATION
             self.explosion_duration = Constants.EXPLOSION_DURATION
             list_Bomb = Bomb().create_bomb(add_xs, add_ys)
