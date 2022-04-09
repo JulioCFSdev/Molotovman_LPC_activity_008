@@ -12,7 +12,7 @@ class Draw_Players:
         pos_y_s = 50 + add_y
         screen.blit(Soviet.soviet_soldier(Soviet, last_key_pressed),(pos_x_s, pos_y_s))
 
-    def draw_american(self, add_x, add_y):
+    def draw_american(self, add_x, add_y, last_key_pressed):
         pos_x_a = 850 + add_x
         pos_y_a = 650 + add_y
-        screen.blit(American.american_soldier(American),(pos_x_a, pos_y_a))
+        screen.blit(American.american_soldier(American, last_key_pressed),(pos_x_a, pos_y_a))

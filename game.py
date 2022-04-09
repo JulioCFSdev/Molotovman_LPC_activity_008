@@ -13,11 +13,16 @@ add_ys = 0
 add_xa = 0
 add_ya = 0
 bomb_ativation = False
-last_key_pressed_s = 0
 # Last_key_pressed_soviet = W -> 1
 # Last_key_pressed_soviet = S -> 0
 # Last_key_pressed_soviet = A -> 2
 # Last_key_pressed_soviet = D -> 3
+last_key_pressed_s = 0
+# Last_key_pressed_american = up -> 1
+# Last_key_pressed_american = down -> 0
+# Last_key_pressed_american = left -> 2
+# Last_key_pressed_american = right -> 3
+last_key_pressed_a = 0
 
 class Game:
 
@@ -26,7 +31,7 @@ class Game:
 
 
     def game_input(self):
-        global add_xs, add_ys, add_xa, add_ya, bomb_ativation, pos_bomb, last_key_pressed_s
+        global add_xs, add_ys, add_xa, add_ya, bomb_ativation, pos_bomb, last_key_pressed_s, last_key_pressed_a
         if pygame.key.get_pressed()[pygame.K_w]:
             add_ys -= 20
             last_key_pressed_s = 1
@@ -53,12 +58,16 @@ class Game:
             Bomb().create_bomb(add_xs, add_ys)
         if pygame.key.get_pressed()[pygame.K_UP]:
             add_ya -= 20
+            last_key_pressed_a = 1
         if pygame.key.get_pressed()[pygame.K_DOWN]:
             add_ya += 20
+            last_key_pressed_a = 0
         if pygame.key.get_pressed()[pygame.K_RIGHT]:
             add_xa += 20
+            last_key_pressed_a = 2
         if pygame.key.get_pressed()[pygame.K_LEFT]:
             add_xa -= 20
+            last_key_pressed_a = 3
 
 
     def game_process(self):
@@ -69,7 +78,7 @@ class Game:
         Objects.Draws.draw_arenabrk(Objects.Draws)
         Objects.Draws.draw_wallbrk(Objects.Draws)
         Draw_Players.draw_soviet(Draw_Players, add_xs, add_ys, last_key_pressed_s)
-        Draw_Players.draw_american(Draw_Players, add_xa, add_ya)
+        Draw_Players.draw_american(Draw_Players, add_xa, add_ya, last_key_pressed_a)
         if bomb_ativation and self.cooldown_bomb != 0:
             Objects.Draws.draw_bomb(pos_bomb[0], pos_bomb[1])
             self.cooldown_bomb -= 1 
