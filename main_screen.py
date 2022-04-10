@@ -11,7 +11,7 @@ class Main_screen():
         click = False
         while menu_stats:
             screen.fill(Colors.WHITE)
-            menu_img = pygame.image.load("img/menu_bg.jpg")
+            menu_img = pygame.image.load("img/start_screen.png")
             mx, my = pygame.mouse.get_pos()
 
             start_button = pygame.Rect((Constants.SCREEN_SIZE[1] / 2) + 25, 600, 145, 47)
