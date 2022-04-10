@@ -1,6 +1,6 @@
 import pygame
 from Brick import Bricks
-from Config import screen
+from Config import Colors, screen
 from mobile_game_object import Draw_Players
 from Bomb import Bomb
 bomb = Bomb()
@@ -16,7 +16,7 @@ class Objects:
         def draw_arenabrk(self):
             for e in range(0, 1050, 50):
                 screen.blit(Bricks.images(Bricks)[0], (e, 0))
-                arenabrk = pygame.rect.Rect(e, 0, 50, 50)
+                arenabrk = pygame.rect.Rect(e, 0, 45, 45)
                 self.brick_coord.append(arenabrk)
             for e in range(0, 1050, 50):
                 screen.blit(Bricks.images(Bricks)[0], (e, 700))
