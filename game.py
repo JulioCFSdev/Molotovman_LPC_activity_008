@@ -135,7 +135,7 @@ class Game:
             if last_key_pressed_s == 1:
                 add_ys += 25
             if last_key_pressed_s == 2:
-                add_xs += 30
+                add_xs += 35
 
 
 
@@ -144,13 +144,13 @@ class Game:
 
         if Draw_Players.draw_american(Draw_Players, add_xa, add_ya, last_key_pressed_a) is True:
             if last_key_pressed_a == 0:
-                add_ya -= 20
-            if last_key_pressed_a == 3:
-                add_xa -= 20
-            if last_key_pressed_a == 1:
-                add_ya += 20
+                add_ya -= 25
             if last_key_pressed_a == 2:
-                add_xa += 30
+                add_xa -= 25
+            if last_key_pressed_a == 1:
+                add_ya += 25
+            if last_key_pressed_a == 3:
+                add_xa += 35
 
     def game_draw(self):
         global explosion_range_s, explosion_range_a, explosion_ativation_s, explosion_ativation_a, cooldown_bomb_s, cooldown_bomb_a
