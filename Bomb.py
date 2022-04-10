@@ -13,10 +13,9 @@ class Bomb:
         self.explosion_right = pygame.image.load("sprites/Explosion/explosion_corner_right.png")
         self.explosion_down = pygame.image.load("sprites/Explosion/explosion_corner_down.png")
 
-
     def create_bomb(self, pos_x_s, pos_y_s):
         bomb = pygame.Rect(pos_x_s + 50, pos_y_s + 50, 45, 45)
-        
+
         return bomb
 
     def exploding_bomb(self, pos_x_s, pos_y_s):

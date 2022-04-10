@@ -1,5 +1,5 @@
 import pygame
-from Config import Constants, game_loop, screen, Colors, background, time_counter, time_text
+from Config import Constants, game_loop, screen, Colors, background, time_counter, time_text, brick_coord
 from main_screen import Main_screen
 from game_object import Objects
 from mobile_game_object import Draw_Players
@@ -39,7 +39,7 @@ class Game:
 
 
     def game_input(self):
-        global add_xs, add_ys, add_xa, add_ya, bomb_ativation, pos_bomb, last_key_pressed_s, last_key_pressed_a, list_Bomb, cooldown_bomb
+        global add_xs, add_ys, add_xa, add_ya, bomb_ativation, pos_bomb, last_key_pressed_s, last_key_pressed_a, list_Bomb, cooldown_bomb, brick_coord
         if pygame.key.get_pressed()[pygame.K_w]:
             add_ys -= 20
             last_key_pressed_s = 1
@@ -108,6 +108,7 @@ class Game:
 
         if add_ys <= 0:
             add_ys = 0
+
 
     def wall_limits_american(self):
         global add_xa, add_ya
