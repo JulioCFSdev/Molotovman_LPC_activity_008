@@ -52,13 +52,13 @@ class Game:
         if pygame.key.get_pressed()[pygame.K_w]:
             add_ys -= 20
             last_key_pressed_s = 1
-        if pygame.key.get_pressed()[pygame.K_s]:
+        elif pygame.key.get_pressed()[pygame.K_s]:
             add_ys += 20
             last_key_pressed_s = 0
-        if pygame.key.get_pressed()[pygame.K_a]:
+        elif pygame.key.get_pressed()[pygame.K_a]:
             add_xs -= 20
             last_key_pressed_s = 2
-        if pygame.key.get_pressed()[pygame.K_d]:
+        elif pygame.key.get_pressed()[pygame.K_d]:
             add_xs += 20
             last_key_pressed_s = 3
         if pygame.key.get_pressed()[pygame.K_e] and cooldown_bomb_s <= 0:
@@ -82,13 +82,13 @@ class Game:
         if pygame.key.get_pressed()[pygame.K_UP]:
             add_ya -= 20
             last_key_pressed_a = 1
-        if pygame.key.get_pressed()[pygame.K_DOWN]:
+        elif pygame.key.get_pressed()[pygame.K_DOWN]:
             add_ya += 20
             last_key_pressed_a = 0
-        if pygame.key.get_pressed()[pygame.K_RIGHT]:
+        elif pygame.key.get_pressed()[pygame.K_RIGHT]:
             add_xa += 20
             last_key_pressed_a = 2
-        if pygame.key.get_pressed()[pygame.K_LEFT]:
+        elif pygame.key.get_pressed()[pygame.K_LEFT]:
             add_xa -= 20
             last_key_pressed_a = 3
         if pygame.key.get_pressed()[pygame.K_KP0] and cooldown_bomb_a <= 0:
