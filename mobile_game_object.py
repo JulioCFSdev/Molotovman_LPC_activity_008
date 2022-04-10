@@ -35,10 +35,6 @@ class Draw_Players:
         while x < len(brick_coord):
 
             if pygame.Rect.colliderect(obj_rect, brick_coord[x]):
-
-                print((obj_soviet.x, obj_soviet.y))
-                print((brick_coord[x].x, brick_coord[x].y))
-                print("colidiu")
                 colide = True
             x += 1
 

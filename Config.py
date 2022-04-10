@@ -28,6 +28,7 @@ time_text = '180'.rjust(3)
 time_counter = 180
 brick_coord = []
 brick_list = []
+wall_coord = []
 
 for e in range(0, 1050, 50):
     arenabrk = pygame.Rect(e, 0, 30, 30)
@@ -56,28 +57,40 @@ for i in range(0, 500, 100):
         wallbrk = pygame.Rect(e, 150 + i, 30, 30)
         if wallbrk not in brick_coord:
             brick_coord.append(wallbrk)
+        if wallbrk not in wall_coord:
+            wall_coord.append(wallbrk)
 for i in range(0, 600, 100):
     for e in range(100, 650, 50):
         wallbrk = pygame.Rect(200 + i, e, 30, 30)
         if wallbrk not in brick_coord:
             brick_coord.append(wallbrk)
+        if wallbrk not in wall_coord:
+            wall_coord.append(wallbrk)
 for i in range(0, 100, 50):
      for e in range(0, 150, 50):
         wallbrk = pygame.Rect(50 + i, 320 + e, 30, 30)
         if wallbrk not in brick_coord:
             brick_coord.append(wallbrk)
+        if wallbrk not in wall_coord:
+            wall_coord.append(wallbrk)
 for i in range(0, 100, 50):
      for e in range(0, 150, 50):
         wallbrk = pygame.Rect(800 + i, 320 + e, 30, 30)
         if wallbrk not in brick_coord:
             brick_coord.append(wallbrk)
+        if wallbrk not in wall_coord:
+            wall_coord.append(wallbrk)
 for i in range(0, 50, 50):
     for e in range(0, 150, 50):
         wallbrk = pygame.Rect(450 + e, 650 + i, 30, 30)
         if wallbrk not in brick_coord:
             brick_coord.append(wallbrk)
+        if wallbrk not in wall_coord:
+            wall_coord.append(wallbrk)
 for i in range(0, 50, 50):
     for e in range(0, 150, 50):
-        wallbrk = pygame.Rect(450 + e, 650 + i, 50, 50)
+        wallbrk = pygame.Rect(450 + e, 50 + i, 50, 50)
         if wallbrk not in brick_coord:
             brick_coord.append(wallbrk)
+        if wallbrk not in wall_coord:
+            wall_coord.append(wallbrk)

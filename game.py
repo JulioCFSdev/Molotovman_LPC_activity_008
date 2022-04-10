@@ -178,8 +178,6 @@ class Game:
             Objects.Draws().collision_player(explosion_range_s, soviet_rect, self.explosion_duration_s)
             Objects.Draws().collision_player(explosion_range_s, american_rect, self.explosion_duration_s)
             Objects.Draws.draw_explosion(pos_bomb_s[0], pos_bomb_s[1], player_1)
-            for i in explosion_range_s:
-                pygame.draw.rect(screen, Colors.BLUE, i)
             self.explosion_duration_s -= 1
             cooldown_bomb_s -= 1
             if self.explosion_duration_s == 0:
@@ -200,8 +198,6 @@ class Game:
             Objects.Draws().collision_player(explosion_range_a, soviet_rect, self.explosion_duration_a)
             Objects.Draws().collision_player(explosion_range_a, american_rect, self.explosion_duration_a)
             Objects.Draws.draw_explosion(pos_bomb_a[0], pos_bomb_a[1], player_2)
-            for i in explosion_range_a:
-                pygame.draw.rect(screen, Colors.BROWN, i)
             self.explosion_duration_a -= 1
             cooldown_bomb_a -= 1
             if self.explosion_duration_a == 0:
