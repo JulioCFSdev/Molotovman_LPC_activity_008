@@ -1,6 +1,7 @@
 import pygame
 from Config import Colors, Constants, screen
 
+
 class Main_screen():
     def menu():
         global menu_stats
@@ -8,7 +9,6 @@ class Main_screen():
         quit_txt = Constants.PYFONT.render("Quit", True, Colors.BLACK)
         menu_stats = True
         click = False
-
         while menu_stats:
             screen.fill(Colors.WHITE)
             menu_img = pygame.image.load("img/start_screen.png")
@@ -43,6 +43,6 @@ class Main_screen():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
                         click = True
-                        
+
             pygame.time.Clock().tick(Constants.CLOCK_TICK)
             pygame.display.update()

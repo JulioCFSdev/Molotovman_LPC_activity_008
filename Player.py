@@ -1,6 +1,5 @@
 import pygame
 
-
 pygame.init()
 
 class Soviet:
@@ -14,7 +13,10 @@ class Soviet:
             soviet_soldier = pygame.image.load("sprites/Player/Player_red_left.png")
         elif last_key_pressed == 3:
             soviet_soldier = pygame.image.load("sprites/Player/Player_red_right.png")
-        return (soviet_soldier)
+
+
+
+        return soviet_soldier
 
 
 class American:
@@ -27,7 +29,5 @@ class American:
             american_soldier = pygame.image.load("sprites/Player/Player_usa_right.png")
         elif last_key_pressed == 3:
             american_soldier = pygame.image.load("sprites/Player/Player_usa_left.png")
-        
+
         return (american_soldier)
-
-
