@@ -135,24 +135,22 @@ class Game:
             if last_key_pressed_s == 1:
                 add_ys += 25
             if last_key_pressed_s == 2:
-                add_xs += 35
+                add_xs += 30
 
 
 
     def wall_limits_american(self):
-        global add_xa, add_ya
+        global add_xa, add_ya, last_key_pressed_a
 
-        if add_ya >= -5:
-            add_ya = 0
-
-        if add_ya <= -595:
-            add_ya = -595
-
-        if add_xa >= 0:
-            add_xa = 0
-
-        if add_xa <= -800:
-            add_xa = -800
+        if Draw_Players.draw_american(Draw_Players, add_xa, add_ya, last_key_pressed_a) is True:
+            if last_key_pressed_a == 0:
+                add_ya -= 20
+            if last_key_pressed_a == 3:
+                add_xa -= 20
+            if last_key_pressed_a == 1:
+                add_ya += 20
+            if last_key_pressed_a == 2:
+                add_xa += 30
 
     def game_draw(self):
         global explosion_range_s, explosion_range_a, explosion_ativation_s, explosion_ativation_a, cooldown_bomb_s, cooldown_bomb_a
