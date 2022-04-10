@@ -122,19 +122,19 @@ class Game:
                 screen.blit(game_over_text, (Constants.SCREEN_SIZE[0] / 2 - 100, Constants.SCREEN_SIZE[1] / 2))
 
     def wall_limits_soviet(self):
-        global add_xs, add_ys
+        global add_xs, add_ys, last_key_pressed_s
 
-        if add_xs < 0:
-            add_xs = 0
 
-        if add_xs >= 800:
-            add_xs = 800
+        if Draw_Players.draw_soviet(Draw_Players, add_xs, add_ys, last_key_pressed_s) is True:
+            if last_key_pressed_s == 0:
+                add_ys -= 25
+            if last_key_pressed_s == 3:
+                add_xs -= 25
+            if last_key_pressed_s == 1:
+                add_ys += 25
+            if last_key_pressed_s == 2:
+                add_xs += 35
 
-        if add_ys >= 570:
-            add_ys = 570
-
-        if add_ys <= -20:
-            add_ys = -20
 
 
     def wall_limits_american(self):
