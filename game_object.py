@@ -11,6 +11,7 @@ class Objects:
     class Draws:
         def __init__(self):
             self.brick_coord = []
+            self.animation_counter = 0
         
         def draw_arenabrk(self):
             for e in range(0, 1050, 50):
@@ -76,8 +77,13 @@ class Objects:
         def draw_bomb(pos_x_s, pos_y_s):
             screen.blit(bomb.img_dynamite, (pos_x_s + 50, pos_y_s + 50))
 
-        def draw_exploding_bomb(pos_x_s, pos_y_s):
-            screen.blit(bomb.img_dynamite_exploding,(pos_x_s + 50, pos_y_s + 50))
+        def draw_exploding_bomb(self, pos_x_s, pos_y_s):
+            if self.animation_counter%3 != 0:
+                screen.blit(bomb.img_dynamite,(pos_x_s + 50, pos_y_s + 50))
+                self.animation_counter += 1
+            else:
+                screen.blit(Bricks.images(Bricks)[1],(pos_x_s + 50, pos_y_s + 50))
+                self.animation_counter += 1
 
         def draw_explosion(pos_x_s, pos_y_s):
             screen.blit(bomb.explosion_up, (pos_x_s + 50, pos_y_s))
