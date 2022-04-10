@@ -106,14 +106,14 @@ class Game:
         if add_ys >= 570:
             add_ys = 570
 
-        if add_ys <= 0:
-            add_ys = 0
+        if add_ys <= -20:
+            add_ys = -20
 
 
     def wall_limits_american(self):
         global add_xa, add_ya
 
-        if add_ya >= 0:
+        if add_ya >= -5:
             add_ya = 0
 
         if add_ya <= -595:
