@@ -125,10 +125,6 @@ class Game:
         if add_xa <= -800:
             add_xa = -800
 
-
-
-
-
     def game_draw(self):
         global explosion_range, explosion_ativation, cooldown_bomb
         screen.blit(background, (0, 0))
