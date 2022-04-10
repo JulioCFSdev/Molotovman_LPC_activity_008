@@ -1,6 +1,6 @@
 import pygame
 from Brick import Bricks
-from Config import screen, brick_coord
+from Config import screen, brick_coord, brick_list
 from mobile_game_object import Draw_Players
 from Bomb import Bomb
 from Player import Soviet
@@ -11,20 +11,34 @@ x = 0
 class Objects:
     class Draws:
         
+
+        def collision_brick(self, explosion_list, duration_explosion):
+            if duration_explosion > 0:
+                for explosion in explosion_list:
+                    for brick in brick_coord:
+                        if pygame.Rect.colliderect(explosion, brick):
+                            print("COLIDIU BRICK")
+
+
+        def collision_player(self, explosion_list, player_rect, duration_explosion):
+            if duration_explosion > 0:
+                for i in explosion_list:
+                    if pygame.Rect.colliderect(i, player_rect):
+                        print("COLIDIU PLAYER")
+
+
         def draw_arenabrk(self):
             global brick_coord
             for e in range(0, 1050, 50):
                 screen.blit(Bricks.images(Bricks)[0], (e, 0))
-                arenabrk = pygame.Rect(e, 0, 50, 50)
-            for e in range(0, 1050, 50):
+                arenabrk_1 = pygame.Rect(e, 0, 50, 50)
                 screen.blit(Bricks.images(Bricks)[0], (e, 700))
-                arenabrk = pygame.Rect(e, 700, 50, 50)
+                arenabrk_2 = pygame.Rect(e, 700, 50, 50)
             for e in range(0, 800, 50):
                 screen.blit(Bricks.images(Bricks)[0], (0, e))
-                arenabrk = pygame.Rect(0, e, 50, 50)
-            for e in range(0, 800, 50):
+                arenabrk_1 = pygame.Rect(0, e, 50, 50)
                 screen.blit(Bricks.images(Bricks)[0], (900, e))
-                arenabrk = pygame.Rect(900, e, 50, 50)
+                arenabrk_2 = pygame.Rect(900, e, 50, 50)
             for i in range(0, 600, 100):
                 for e in range(0, 700, 100):
                     screen.blit(Bricks.images(Bricks)[0], (150 + e, 100 + i))
@@ -44,16 +58,12 @@ class Objects:
                 for e in range(0, 150, 50):
                     screen.blit(Bricks.images(Bricks)[1], (50 + i, 320 + e))
                     wallbrk = pygame.Rect(50 + i, 320 + e, 50, 50)
-            for i in range(0, 100, 50):
-                for e in range(0, 150, 50):
                     wallbrk = pygame.Rect(800 + i, 320 + e, 50, 50)
                     screen.blit(Bricks.images(Bricks)[1], (800 + i, 320 + e))
             for i in range(0, 50, 50):
                 for e in range(0, 150, 50):
                     screen.blit(Bricks.images(Bricks)[1], (450 + e, 650 + i))
                     wallbrk = pygame.Rect(450 + e, 650 + i, 50, 50)
-            for i in range(0, 50, 50):
-                for e in range(0, 150, 50):
                     screen.blit(Bricks.images(Bricks)[1], (450 + e, 50 + i))
                     wallbrk = pygame.Rect(450 + e, 650 + i, 50, 50)
 

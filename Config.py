@@ -27,6 +27,7 @@ Hud = pygame.image.load("sprites/Scenario/HUD.png")
 time_text = '180'.rjust(3)
 time_counter = 180
 brick_coord = []
+brick_list = []
 
 for e in range(0, 1050, 50):
     arenabrk = pygame.Rect(e, 0, 30, 30)

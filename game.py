@@ -112,7 +112,9 @@ class Game:
 
 
     def game_process(self):
-        global time_game, time_text
+        global time_game, time_text, soviet_rect, american_rect
+        soviet_rect = Draw_Players().create_soviet(add_xs, add_ys, last_key_pressed_s)
+        american_rect = Draw_Players().create_american(add_xa, add_ya, last_key_pressed_a)
         for event in pygame.event.get():
             if event.type == pygame.USEREVENT:
                 time_game -= 1
@@ -172,6 +174,9 @@ class Game:
 
         # Draw explosion range of soviet bomb
         if explosion_ativation_s and self.explosion_duration_s != 0:
+            Objects.Draws().collision_brick(explosion_range_s, self.explosion_duration_s)
+            Objects.Draws().collision_player(explosion_range_s, soviet_rect, self.explosion_duration_s)
+            Objects.Draws().collision_player(explosion_range_s, american_rect, self.explosion_duration_s)
             Objects.Draws.draw_explosion(pos_bomb_s[0], pos_bomb_s[1], player_1)
             for i in explosion_range_s:
                 pygame.draw.rect(screen, Colors.BLUE, i)
@@ -191,6 +196,9 @@ class Game:
 
         # Draw explosion range of american bomb
         if explosion_ativation_a and self.explosion_duration_a != 0:
+            Objects.Draws().collision_brick(explosion_range_a, self.explosion_duration_a)
+            Objects.Draws().collision_player(explosion_range_a, soviet_rect, self.explosion_duration_a)
+            Objects.Draws().collision_player(explosion_range_a, american_rect, self.explosion_duration_a)
             Objects.Draws.draw_explosion(pos_bomb_a[0], pos_bomb_a[1], player_2)
             for i in explosion_range_a:
                 pygame.draw.rect(screen, Colors.BROWN, i)
