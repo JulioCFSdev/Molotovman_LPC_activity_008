@@ -25,3 +25,4 @@ screen = pygame.display.set_mode(Constants.SCREEN_SIZE)
 background = pygame.image.load("sprites/Scenario/Background.png")
 time_text = '180'.rjust(3)
 time_counter = 180
+coord_blocks = []

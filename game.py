@@ -131,8 +131,8 @@ class Game:
     def game_draw(self):
         global explosion_range, explosion_ativation, cooldown_bomb
         screen.blit(background, (0, 0))
-        Objects.Draws.draw_arenabrk(Objects.Draws)
-        Objects.Draws.draw_wallbrk(Objects.Draws)
+        Objects.Draws().draw_arenabrk()
+        Objects.Draws().draw_wallbrk()
         Draw_Players.draw_soviet(Draw_Players, add_xs, add_ys, last_key_pressed_s)
         Draw_Players.draw_american(Draw_Players, add_xa, add_ya, last_key_pressed_a)
         screen.blit(Constants.PYFONT.render(time_text, True, Colors.BLACK), (Constants.SCREEN_SIZE[0] / 2, 5))
