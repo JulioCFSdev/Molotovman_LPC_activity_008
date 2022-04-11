@@ -34,10 +34,8 @@ class Objects:
                     if pygame.Rect.colliderect(i, player_rect):
                         if player_type == "sve":
                             death = True
-                            print("Explosão no soviético")
                         if player_type == "amr":
                             death = True
-                            print("Explosão no americano")
                 return death
             else:
 
