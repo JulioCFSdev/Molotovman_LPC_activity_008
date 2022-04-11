@@ -17,6 +17,7 @@ add_xa = 0
 add_ya = 0
 player_1 = 1
 player_2 = 2
+pause = False
 bomb_ativation_s = False
 bomb_ativation_a = False
 explosion_ativation_s = False
@@ -159,10 +160,18 @@ class Game:
 
 
     def game_draw(self):
-        global explosion_range_s, explosion_range_a, explosion_ativation_s, explosion_ativation_a, cooldown_bomb_s, cooldown_bomb_a, add_xs, add_ys, add_xa, add_ya, scr_sv, scr_am
+        global explosion_range_s, explosion_range_a, explosion_ativation_s, explosion_ativation_a, cooldown_bomb_s, cooldown_bomb_a, add_xs, add_ys, add_xa, add_ya, scr_sv, scr_am, pause
         screen.blit(background, (0, 0))
         Objects.Draws().draw_arenabrk()
         Objects.Draws().draw_wallbrk()
+        if pause:
+            pause_screen = pygame.image.load("img/Pause_screen.png")
+            screen.blit(pause_screen, (262, 200))
+            Hud.draw(Hud, str(scr_sv), str(scr_am))
+            Draw_Players.draw_soviet(Draw_Players, add_xs, add_ys, last_key_pressed_s)
+            Draw_Players.draw_american(Draw_Players, add_xa, add_ya, last_key_pressed_a)
+            pygame.display.update()
+
         Draw_Players.draw_soviet(Draw_Players, add_xs, add_ys, last_key_pressed_s)
         Draw_Players.draw_american(Draw_Players, add_xa, add_ya, last_key_pressed_a)
         Hud.draw(Hud, str(scr_sv), str(scr_am))
@@ -275,7 +284,19 @@ class Game:
 
 
     def game_loop(self):
+        global pause
         while game_loop:
+
+            if pause:
+                Game.game_draw(Game)
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        exit()
+                    elif event.type == pygame.KEYDOWN:
+                        if event.key == pygame.K_p:
+                            pause = not pause
+                continue
 
             screen.fill(Colors.BLACK)
             Game.game_input(Game)
@@ -288,6 +309,9 @@ class Game:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     exit()
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_p:
+                        pause = not pause
 
             
             pygame.display.flip()
