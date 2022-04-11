@@ -203,7 +203,7 @@ class Game:
                 add_ya = 0
                 scr_sv += 1
 
-            if scr_sv == 3:
+            if scr_sv >= 3:
                 win_screen = pygame.image.load("img/Player_1_win.png")
                 Hud.draw(Hud, str(scr_sv), str(scr_am))
                 screen.blit(win_screen, (200, 100))
@@ -211,7 +211,7 @@ class Game:
                 pygame.time.wait(3000)
                 exit()
 
-            if scr_am == 3:
+            if scr_am >= 3:
                 win_screen = pygame.image.load("img/Player_2_win.png")
                 Hud.draw(Hud, str(scr_sv), str(scr_am))
                 screen.blit(win_screen, (200, 100))
