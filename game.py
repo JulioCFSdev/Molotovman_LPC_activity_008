@@ -45,6 +45,8 @@ class Game:
     time_game = time_counter
     time_text = time_text
     def __init__(self):
+        pygame.mixer.music.load("sounds/Gameplay_theme.mp3")
+        pygame.mixer.music.play(-1)
         self.bomb_duration_s = 0
         self.bomb_duration_a = 0
         self.explosion_duration_s = 0
@@ -185,6 +187,8 @@ class Game:
             if self.bomb_duration_s == 0:
                 explosion_ativation_s = True
                 explosion_range_s = Bomb().create_explosion(pos_bomb_s[0], pos_bomb_s[1], player_1)
+                # Sound explosion soviet
+                Constants.sound_explosion.play()
 
         # Draw explosion range of soviet bomb
         if explosion_ativation_s and self.explosion_duration_s != 0:
@@ -236,6 +240,8 @@ class Game:
             if self.bomb_duration_a == 0:
                 explosion_ativation_a = True
                 explosion_range_a = Bomb().create_explosion(pos_bomb_a[0], pos_bomb_a[1], player_2)
+                # Sound explosion american
+                Constants.sound_explosion.play()
 
         # Draw explosion range of american bomb
         if explosion_ativation_a and self.explosion_duration_a != 0:

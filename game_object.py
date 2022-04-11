@@ -1,6 +1,6 @@
 import pygame
 from Brick import Bricks
-from Config import screen, brick_coord, brick_list, wall_coord
+from Config import screen, brick_coord, wall_coord, Constants 
 from mobile_game_object import Draw_Players
 from Bomb import Bomb
 from Player import Soviet
@@ -18,6 +18,7 @@ class Objects:
                 for explosion in explosion_list:
                     for brick in wall_coord:
                         if pygame.Rect.colliderect(explosion, brick):
+                            Constants.sound_hit.play()
                             del wall_coord[wall_coord.index(brick)]
                             brick_coord.remove(brick)
             return wall_coord
@@ -32,6 +33,7 @@ class Objects:
             if duration_explosion > 0:
                 for i in explosion_list:
                     if pygame.Rect.colliderect(i, player_rect):
+                        Constants.sound_hit.play()
                         if player_type == "sve":
                             death = True
                         if player_type == "amr":

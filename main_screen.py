@@ -9,6 +9,8 @@ class Main_screen():
         quit_txt = Constants.PYFONT.render("Quit", True, Colors.BLACK)
         menu_stats = True
         click = False
+        pygame.mixer.music.load("sounds/Title_theme.mp3")
+        pygame.mixer.music.play(-1)
         while menu_stats:
             screen.fill(Colors.WHITE)
             menu_img = pygame.image.load("img/start_screen.png")

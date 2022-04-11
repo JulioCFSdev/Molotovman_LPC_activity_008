@@ -13,6 +13,8 @@ class Colors:
 
 class Constants:
     FONT = "img/upheavtt.ttf"
+    sound_hit = pygame.mixer.Sound("sounds/Bomb_hit.wav")
+    sound_explosion = pygame.mixer.Sound("sounds/Bomb_explosion.mp3")
     PYFONT = pygame.font.Font(FONT, 50)
     CLOCK_TICK = 60
     SCREEN_SIZE = (950, 800)
