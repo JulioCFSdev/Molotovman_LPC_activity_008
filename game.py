@@ -5,6 +5,7 @@ from main_screen import Main_screen
 from game_object import Objects
 from mobile_game_object import Draw_Players
 from Bomb import Bomb
+from HUD import Hud
 
 pygame.init()
 pygame.display.set_caption("MolotovBoy - Cold War")
@@ -162,7 +163,8 @@ class Game:
         Objects.Draws().draw_wallbrk()
         Draw_Players.draw_soviet(Draw_Players, add_xs, add_ys, last_key_pressed_s)
         Draw_Players.draw_american(Draw_Players, add_xa, add_ya, last_key_pressed_a)
-        screen.blit(Constants.PYFONT.render(time_text, True, Colors.BLACK), (Constants.SCREEN_SIZE[0] / 2, 5))
+        Hud.draw(Hud, str(0), str(0))
+        screen.blit(Constants.PYFONT.render(time_text, True, Colors.WHITE), (440, 745))
 
         # Draw bomb and create rects to explosion range of soviet bomb
         if bomb_ativation_s and self.bomb_duration_s != 0:
