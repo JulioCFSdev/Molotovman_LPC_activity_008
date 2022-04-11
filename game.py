@@ -203,6 +203,12 @@ class Game:
                 add_ya = 0
                 scr_sv += 1
 
+            if scr_sv == 3:
+                exit()
+
+            if scr_am == 3:
+                exit()
+
         # Draw bomb and create rects to explosion range of american bomb
         if bomb_ativation_a and self.bomb_duration_a != 0:
             Objects.Draws.draw_bomb(pos_bomb_a[0], pos_bomb_a[1], player_2)
@@ -237,6 +243,14 @@ class Game:
                 add_xa = 0
                 add_ya = 0
                 scr_am += 1
+
+
+            if scr_sv == 3:
+                exit()
+
+            if scr_am == 3:
+                exit()
+
 
 
     def game_loop(self):
