@@ -178,8 +178,8 @@ class Game:
         # Draw explosion range of soviet bomb
         if explosion_ativation_s and self.explosion_duration_s != 0:
             Objects.Draws().collision_brick(explosion_range_s, self.explosion_duration_s)
-            Objects.Draws().collision_player(explosion_range_s, soviet_rect, self.explosion_duration_s)
-            Objects.Draws().collision_player(explosion_range_s, american_rect, self.explosion_duration_s)
+            Objects.Draws().collision_player(explosion_range_s, soviet_rect, self.explosion_duration_s, "sve")
+            Objects.Draws().collision_player(explosion_range_s, american_rect, self.explosion_duration_s, "amr")
             Objects.Draws.draw_explosion(pos_bomb_s[0], pos_bomb_s[1], player_1)
 
             self.explosion_duration_s -= 1
@@ -199,8 +199,8 @@ class Game:
         # Draw explosion range of american bomb
         if explosion_ativation_a and self.explosion_duration_a != 0:
             Objects.Draws().collision_brick(explosion_range_a, self.explosion_duration_a)
-            Objects.Draws().collision_player(explosion_range_a, soviet_rect, self.explosion_duration_a)
-            Objects.Draws().collision_player(explosion_range_a, american_rect, self.explosion_duration_a)
+            Objects.Draws().collision_player(explosion_range_a, american_rect, self.explosion_duration_a, "amr")
+            Objects.Draws().collision_player(explosion_range_a, soviet_rect, self.explosion_duration_a, "sve")
             Objects.Draws.draw_explosion(pos_bomb_a[0], pos_bomb_a[1], player_2)
 
             self.explosion_duration_a -= 1

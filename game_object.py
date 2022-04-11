@@ -24,11 +24,15 @@ class Objects:
 
 
 
-        def collision_player(self, explosion_list, player_rect, duration_explosion):
+        def collision_player(self, explosion_list, player_rect, duration_explosion, player_type):
             if duration_explosion > 0:
                 for i in explosion_list:
                     if pygame.Rect.colliderect(i, player_rect):
-                        print("COLIDIU PLAYER")
+                        if player_type == "sve":
+                            print("Explosão no soviético")
+                        if player_type == "amr":
+                            print("Explosão no americano")
+
             else:
 
                 return False
