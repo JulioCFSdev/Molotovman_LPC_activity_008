@@ -2,8 +2,8 @@ import pygame
 from Config import screen
 from Config import Colors
 
-class Hud:
 
+class Hud:
     def draw(self, scr_sv, scr_am):
         hud_image = pygame.image.load("sprites/Scenario/HUD.png")
         screen.blit(hud_image, (0, 745))

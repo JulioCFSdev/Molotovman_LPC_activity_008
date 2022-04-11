@@ -2,7 +2,7 @@ import pygame
 from Config import Colors, Constants, screen
 
 
-class Main_screen():
+class Main_screen:
     def menu():
         global menu_stats
         play_txt = Constants.PYFONT.render("Play", True, Colors.BLACK)
@@ -16,8 +16,12 @@ class Main_screen():
             menu_img = pygame.image.load("img/start_screen.png")
             mx, my = pygame.mouse.get_pos()
 
-            start_button = pygame.Rect((Constants.SCREEN_SIZE[1] / 2) + 25, 600, 145, 47)
-            quit_button = pygame.Rect((Constants.SCREEN_SIZE[1] / 2) + 25, 700, 145, 47)
+            start_button = pygame.Rect(
+                (Constants.SCREEN_SIZE[1] / 2) + 25, 600, 145, 47
+            )
+            quit_button = pygame.Rect(
+                (Constants.SCREEN_SIZE[1] / 2) + 25, 700, 145, 47
+            )
             screen.blit(menu_img, (0, 0))
             screen.blit(play_txt, ((Constants.SCREEN_SIZE[1] / 2) + 45, 600))
             screen.blit(quit_txt, ((Constants.SCREEN_SIZE[1] / 2) + 45, 700))
