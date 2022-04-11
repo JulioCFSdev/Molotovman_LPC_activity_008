@@ -200,7 +200,7 @@ class Game:
             Objects.Draws().collision_player(explosion_range_a, soviet_rect, self.explosion_duration_a)
             Objects.Draws().collision_player(explosion_range_a, american_rect, self.explosion_duration_a)
             Objects.Draws.draw_explosion(pos_bomb_a[0], pos_bomb_a[1], player_2)
-           
+
             self.explosion_duration_a -= 1
             cooldown_bomb_a -= 1
             if self.explosion_duration_a == 0:

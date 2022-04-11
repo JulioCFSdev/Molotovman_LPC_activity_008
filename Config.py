@@ -89,7 +89,7 @@ for i in range(0, 50, 50):
             wall_coord.append(wallbrk)
 for i in range(0, 50, 50):
     for e in range(0, 150, 50):
-        wallbrk = pygame.Rect(450 + e, 50 + i, 50, 50)
+        wallbrk = pygame.Rect(450 + e, 50 + i, 30, 30)
         if wallbrk not in brick_coord:
             brick_coord.append(wallbrk)
         if wallbrk not in wall_coord:

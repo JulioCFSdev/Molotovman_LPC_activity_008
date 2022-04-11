@@ -77,9 +77,10 @@ class Objects:
                     wallbrk = pygame.Rect(450 + e, 650 + i, 30, 30)
                     if wallbrk in wall_coord:
                         screen.blit(Bricks.images(Bricks)[1], (450 + e, 650 + i))
-                    wallbrk = pygame.Rect(450 + e, 650 + i, 30, 30)
+                    wallbrk = pygame.Rect(450 + e, 50 + i, 30, 30)
                     if wallbrk in wall_coord:
                         screen.blit(Bricks.images(Bricks)[1], (450 + e, 50 + i))
+
 
         def draw_soviet_player(self):
             Draw_Players.draw_soviet(Draw_Players)
