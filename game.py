@@ -22,6 +22,8 @@ bomb_ativation_s = False
 bomb_ativation_a = False
 explosion_ativation_s = False
 explosion_ativation_a = False
+respawn_sv = False
+respawn_am = False
 cooldown_bomb_s = 0
 cooldown_bomb_a = 0
 scr_sv = 0
@@ -162,7 +164,7 @@ class Game:
 
 
     def game_draw(self):
-        global explosion_range_s, explosion_range_a, explosion_ativation_s, explosion_ativation_a, cooldown_bomb_s, cooldown_bomb_a, add_xs, add_ys, add_xa, add_ya, scr_sv, scr_am, pause
+        global explosion_range_s, explosion_range_a, explosion_ativation_s, explosion_ativation_a, cooldown_bomb_s, cooldown_bomb_a, add_xs, add_ys, add_xa, add_ya, scr_sv, scr_am, pause, respawn_sv, respawn_am
         screen.blit(background, (0, 0))
         Objects.Draws().draw_arenabrk()
         Objects.Draws().draw_wallbrk()
@@ -202,14 +204,20 @@ class Game:
             if self.explosion_duration_s == 0:
                 explosion_ativation_s = False
 
-            if Objects.Draws().collision_player(explosion_range_s, soviet_rect, self.explosion_duration_s, "sve") is True:
+            if add_xs == add_ys == 0 and scr_am >= 1:
+                respawn_sv = True
+
+            if add_xa == add_ya == 0 and scr_sv >= 1:
+                respawn_am = True
+
+            if Objects.Draws().collision_player(explosion_range_s, soviet_rect, self.explosion_duration_s, "sve") is True and respawn_sv is False:
                 add_xs = 0
                 add_ys = 0
                 add_xa = 0
                 add_ya = 0
                 scr_am += 1
 
-            if Objects.Draws().collision_player(explosion_range_s, american_rect, self.explosion_duration_s, "amr") is True:
+            if Objects.Draws().collision_player(explosion_range_s, american_rect, self.explosion_duration_s, "amr") is True and respawn_am is False:
                 add_xs = 0
                 add_ys = 0
                 add_xa = 0
@@ -255,14 +263,21 @@ class Game:
             if self.explosion_duration_a == 0:
                 explosion_ativation_a = False
 
-            if Objects.Draws().collision_player(explosion_range_a, american_rect, self.explosion_duration_a, "amr") is True:
+            if add_xs == add_ys == 0 and scr_am >= 1:
+                respawn_sv = True
+
+            if add_xa == add_ya == 0 and scr_sv >= 1:
+                respawn_am = True
+
+
+            if Objects.Draws().collision_player(explosion_range_a, american_rect, self.explosion_duration_a, "amr") is True and respawn_am is False:
                 add_xs = 0
                 add_ys = 0
                 add_xa = 0
                 add_ya = 0
                 scr_sv += 1
 
-            if Objects.Draws().collision_player(explosion_range_a, soviet_rect, self.explosion_duration_a, "sve") is True:
+            if Objects.Draws().collision_player(explosion_range_a, soviet_rect, self.explosion_duration_a, "sve") is True and respawn_sv is False:
                 add_xs = 0
                 add_ys = 0
                 add_xa = 0
@@ -286,6 +301,9 @@ class Game:
                 pygame.display.update()
                 pygame.time.wait(3000)
                 exit()
+
+        respawn_am = False
+        respawn_sv = False
 
 
 
@@ -319,7 +337,7 @@ class Game:
                     if event.key == pygame.K_p:
                         pause = not pause
 
-            
+
             pygame.display.flip()
             pygame.time.Clock().tick(Constants.CLOCK_TICK)
 
