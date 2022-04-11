@@ -19,6 +19,7 @@ class Objects:
                     for brick in wall_coord:
                         if pygame.Rect.colliderect(explosion, brick):
                             del wall_coord[wall_coord.index(brick)]
+                            brick_coord.remove(brick)
             return wall_coord
 
 
