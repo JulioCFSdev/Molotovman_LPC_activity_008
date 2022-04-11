@@ -40,7 +40,7 @@ class Bomb:
 
         elif type_soldier == 2:
             pos_init_x = 850
-            pos_init_y = 655
+            pos_init_y = 630
 
         explosion_up = pygame.Rect(pos_x_s + pos_init_x, pos_y_s + (pos_init_y - 50), 45, 45)
         explosion_center = pygame.Rect(pos_x_s + pos_init_x, pos_y_s + pos_init_y, 45, 45)

@@ -52,13 +52,13 @@ class Game:
         if pygame.key.get_pressed()[pygame.K_w]:
             add_ys -= 20
             last_key_pressed_s = 1
-        if pygame.key.get_pressed()[pygame.K_s]:
+        elif pygame.key.get_pressed()[pygame.K_s]:
             add_ys += 20
             last_key_pressed_s = 0
-        if pygame.key.get_pressed()[pygame.K_a]:
+        elif pygame.key.get_pressed()[pygame.K_a]:
             add_xs -= 20
             last_key_pressed_s = 2
-        if pygame.key.get_pressed()[pygame.K_d]:
+        elif pygame.key.get_pressed()[pygame.K_d]:
             add_xs += 20
             last_key_pressed_s = 3
         if pygame.key.get_pressed()[pygame.K_e] and cooldown_bomb_s <= 0:
@@ -82,13 +82,13 @@ class Game:
         if pygame.key.get_pressed()[pygame.K_UP]:
             add_ya -= 20
             last_key_pressed_a = 1
-        if pygame.key.get_pressed()[pygame.K_DOWN]:
+        elif pygame.key.get_pressed()[pygame.K_DOWN]:
             add_ya += 20
             last_key_pressed_a = 0
-        if pygame.key.get_pressed()[pygame.K_RIGHT]:
+        elif pygame.key.get_pressed()[pygame.K_RIGHT]:
             add_xa += 20
             last_key_pressed_a = 2
-        if pygame.key.get_pressed()[pygame.K_LEFT]:
+        elif pygame.key.get_pressed()[pygame.K_LEFT]:
             add_xa -= 20
             last_key_pressed_a = 3
         if pygame.key.get_pressed()[pygame.K_KP0] and cooldown_bomb_a <= 0:
@@ -140,19 +140,20 @@ class Game:
 
 
     def wall_limits_american(self):
-        global add_xa, add_ya
+        global add_xa, add_ya, last_key_pressed_a
 
-        if add_ya >= -5:
-            add_ya = 0
+        if Draw_Players.draw_american(Draw_Players, add_xa, add_ya, last_key_pressed_a) is True:
 
-        if add_ya <= -595:
-            add_ya = -595
+            if last_key_pressed_a == 0:
+                add_ya -= 25
+            if last_key_pressed_a == 2:
+                add_xa -= 25
+            if last_key_pressed_a == 1:
+                add_ya += 25
+            if last_key_pressed_a == 3:
+                add_xa += 35
 
-        if add_xa >= 0:
-            add_xa = 0
 
-        if add_xa <= -800:
-            add_xa = -800
 
     def game_draw(self):
         global explosion_range_s, explosion_range_a, explosion_ativation_s, explosion_ativation_a, cooldown_bomb_s, cooldown_bomb_a
@@ -178,8 +179,7 @@ class Game:
             Objects.Draws().collision_player(explosion_range_s, soviet_rect, self.explosion_duration_s)
             Objects.Draws().collision_player(explosion_range_s, american_rect, self.explosion_duration_s)
             Objects.Draws.draw_explosion(pos_bomb_s[0], pos_bomb_s[1], player_1)
-            for i in explosion_range_s:
-                pygame.draw.rect(screen, Colors.BLUE, i)
+
             self.explosion_duration_s -= 1
             cooldown_bomb_s -= 1
             if self.explosion_duration_s == 0:
@@ -200,8 +200,7 @@ class Game:
             Objects.Draws().collision_player(explosion_range_a, soviet_rect, self.explosion_duration_a)
             Objects.Draws().collision_player(explosion_range_a, american_rect, self.explosion_duration_a)
             Objects.Draws.draw_explosion(pos_bomb_a[0], pos_bomb_a[1], player_2)
-            for i in explosion_range_a:
-                pygame.draw.rect(screen, Colors.BROWN, i)
+           
             self.explosion_duration_a -= 1
             cooldown_bomb_a -= 1
             if self.explosion_duration_a == 0:
