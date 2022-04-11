@@ -1,5 +1,5 @@
 # Molotovman_LPC_activity_008
-Jogo baseado no Super Bomberman 3 de SNES, desenvolvido por alunos da Universidade do Estado do Amazonas, do curso de Sistemas de Informação.
+Jogo baseado no Super Bomberman de SNES, desenvolvido por alunos da Universidade do Estado do Amazonas, do curso de Sistemas de Informação.
 Desenvolvedores: Arthur Uguen de Mendonça, Diana de Oliveira, Guilherme Tapajós, Johann Mayos e Júlio César Ferreira.
 
 ![image](https://user-images.githubusercontent.com/90109601/162675559-7902d52e-5328-439d-9af1-de14081447db.png)
