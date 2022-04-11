@@ -157,7 +157,7 @@ class Game:
 
 
     def game_draw(self):
-        global explosion_range_s, explosion_range_a, explosion_ativation_s, explosion_ativation_a, cooldown_bomb_s, cooldown_bomb_a
+        global explosion_range_s, explosion_range_a, explosion_ativation_s, explosion_ativation_a, cooldown_bomb_s, cooldown_bomb_a, add_xs, add_ys, add_xa, add_ya
         screen.blit(background, (0, 0))
         Objects.Draws().draw_arenabrk()
         Objects.Draws().draw_wallbrk()
@@ -187,6 +187,18 @@ class Game:
             if self.explosion_duration_s == 0:
                 explosion_ativation_s = False
 
+            if Objects.Draws().collision_player(explosion_range_s, soviet_rect, self.explosion_duration_s, "sve") is True:
+                add_xs = 0
+                add_ys = 0
+                add_xa = 0
+                add_ya = 0
+
+            if Objects.Draws().collision_player(explosion_range_s, american_rect, self.explosion_duration_s, "amr") is True:
+                add_xs = 0
+                add_ys = 0
+                add_xa = 0
+                add_ya = 0
+
         # Draw bomb and create rects to explosion range of american bomb
         if bomb_ativation_a and self.bomb_duration_a != 0:
             Objects.Draws.draw_bomb(pos_bomb_a[0], pos_bomb_a[1], player_2)
@@ -207,6 +219,19 @@ class Game:
             cooldown_bomb_a -= 1
             if self.explosion_duration_a == 0:
                 explosion_ativation_a = False
+
+            if Objects.Draws().collision_player(explosion_range_a, american_rect, self.explosion_duration_a, "amr") is True:
+                add_xs = 0
+                add_ys = 0
+                add_xa = 0
+                add_ya = 0
+
+            if Objects.Draws().collision_player(explosion_range_a, soviet_rect, self.explosion_duration_a, "sve") is True:
+                add_xs = 0
+                add_ys = 0
+                add_xa = 0
+                add_ya = 0
+
 
     def game_loop(self):
         while game_loop:

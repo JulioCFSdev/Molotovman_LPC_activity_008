@@ -25,14 +25,20 @@ class Objects:
 
 
         def collision_player(self, explosion_list, player_rect, duration_explosion, player_type):
+
+            death = False
+
+
             if duration_explosion > 0:
                 for i in explosion_list:
                     if pygame.Rect.colliderect(i, player_rect):
                         if player_type == "sve":
+                            death = True
                             print("Explosão no soviético")
                         if player_type == "amr":
+                            death = True
                             print("Explosão no americano")
-
+                return death
             else:
 
                 return False
