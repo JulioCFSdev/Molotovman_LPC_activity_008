@@ -23,6 +23,8 @@ explosion_ativation_s = False
 explosion_ativation_a = False
 cooldown_bomb_s = 0
 cooldown_bomb_a = 0
+scr_sv = 0
+scr_am = 0
 # Last_key_pressed_soviet = W -> 1
 # Last_key_pressed_soviet = S -> 0
 # Last_key_pressed_soviet = A -> 2
@@ -157,13 +159,13 @@ class Game:
 
 
     def game_draw(self):
-        global explosion_range_s, explosion_range_a, explosion_ativation_s, explosion_ativation_a, cooldown_bomb_s, cooldown_bomb_a, add_xs, add_ys, add_xa, add_ya
+        global explosion_range_s, explosion_range_a, explosion_ativation_s, explosion_ativation_a, cooldown_bomb_s, cooldown_bomb_a, add_xs, add_ys, add_xa, add_ya, scr_sv, scr_am
         screen.blit(background, (0, 0))
         Objects.Draws().draw_arenabrk()
         Objects.Draws().draw_wallbrk()
         Draw_Players.draw_soviet(Draw_Players, add_xs, add_ys, last_key_pressed_s)
         Draw_Players.draw_american(Draw_Players, add_xa, add_ya, last_key_pressed_a)
-        Hud.draw(Hud, str(0), str(0))
+        Hud.draw(Hud, str(scr_sv), str(scr_am))
         screen.blit(Constants.PYFONT.render(time_text, True, Colors.WHITE), (440, 745))
 
         # Draw bomb and create rects to explosion range of soviet bomb
@@ -192,12 +194,14 @@ class Game:
                 add_ys = 0
                 add_xa = 0
                 add_ya = 0
+                scr_am += 1
 
             if Objects.Draws().collision_player(explosion_range_s, american_rect, self.explosion_duration_s, "amr") is True:
                 add_xs = 0
                 add_ys = 0
                 add_xa = 0
                 add_ya = 0
+                scr_sv += 1
 
         # Draw bomb and create rects to explosion range of american bomb
         if bomb_ativation_a and self.bomb_duration_a != 0:
@@ -225,12 +229,14 @@ class Game:
                 add_ys = 0
                 add_xa = 0
                 add_ya = 0
+                scr_sv += 1
 
             if Objects.Draws().collision_player(explosion_range_a, soviet_rect, self.explosion_duration_a, "sve") is True:
                 add_xs = 0
                 add_ys = 0
                 add_xa = 0
                 add_ya = 0
+                scr_am += 1
 
 
     def game_loop(self):

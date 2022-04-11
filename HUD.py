@@ -19,6 +19,3 @@ class Hud:
         score_am_text_rect = score_am_text.get_rect()
         score_am_text_rect.center = (801, 767)
         screen.blit(score_am_text, score_am_text_rect)
-
-
-
