@@ -25,6 +25,9 @@ class Objects:
                 for i in explosion_list:
                     if pygame.Rect.colliderect(i, player_rect):
                         print("COLIDIU PLAYER")
+            else:
+
+                return False
 
 
         def draw_arenabrk(self):
