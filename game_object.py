@@ -1,6 +1,6 @@
 import pygame
 from Brick import Bricks
-from Config import screen, brick_coord, brick_list
+from Config import screen, brick_coord, brick_list, wall_coord
 from mobile_game_object import Draw_Players
 from Bomb import Bomb
 from Player import Soviet
@@ -13,11 +13,14 @@ class Objects:
         
 
         def collision_brick(self, explosion_list, duration_explosion):
+            global wall_coord
             if duration_explosion > 0:
                 for explosion in explosion_list:
-                    for brick in brick_coord:
+                    for brick in wall_coord:
                         if pygame.Rect.colliderect(explosion, brick):
-                            print("COLIDIU BRICK")
+                            del wall_coord[wall_coord.index(brick)]
+            return wall_coord
+
 
 
         def collision_player(self, explosion_list, player_rect, duration_explosion):
@@ -48,27 +51,34 @@ class Objects:
 
 
         def draw_wallbrk(self):
-            global brick_coord
+            global brick_coord, wall_coord
             for i in range(0, 500, 100):
                 for e in range(150, 800, 50):
-                    screen.blit(Bricks.images(Bricks)[1], (e, 150 + i))
-                    wallbrk = pygame.Rect(e, 150 + i, 50, 50)
+                    wallbrk = pygame.Rect(e, 150 + i, 30, 30)
+                    if wallbrk in wall_coord:
+                        screen.blit(Bricks.images(Bricks)[1], (e, 150 + i))
             for i in range(0, 600, 100):
                 for e in range(100, 650, 50):
-                    screen.blit(Bricks.images(Bricks)[1], (200 + i, e))
-                    wallbrk = pygame.Rect(200 + i, e, 50, 50)
+                    wallbrk = pygame.Rect(200 + i, e, 30, 30)
+                    if wallbrk in wall_coord:
+                        screen.blit(Bricks.images(Bricks)[1], (200 + i, e))
             for i in range(0, 100, 50):
                 for e in range(0, 150, 50):
-                    screen.blit(Bricks.images(Bricks)[1], (50 + i, 320 + e))
-                    wallbrk = pygame.Rect(50 + i, 320 + e, 50, 50)
-                    wallbrk = pygame.Rect(800 + i, 320 + e, 50, 50)
-                    screen.blit(Bricks.images(Bricks)[1], (800 + i, 320 + e))
+                    wallbrk = pygame.Rect(50 + i, 320 + e, 30, 30)
+                    if wallbrk in wall_coord:
+                        screen.blit(Bricks.images(Bricks)[1], (50 + i, 320 + e))
+
+                    wallbrk = pygame.Rect(800 + i, 320 + e, 30, 30)
+                    if wallbrk in wall_coord:
+                        screen.blit(Bricks.images(Bricks)[1], (800 + i, 320 + e))
             for i in range(0, 50, 50):
                 for e in range(0, 150, 50):
-                    screen.blit(Bricks.images(Bricks)[1], (450 + e, 650 + i))
-                    wallbrk = pygame.Rect(450 + e, 650 + i, 50, 50)
-                    screen.blit(Bricks.images(Bricks)[1], (450 + e, 50 + i))
-                    wallbrk = pygame.Rect(450 + e, 650 + i, 50, 50)
+                    wallbrk = pygame.Rect(450 + e, 650 + i, 30, 30)
+                    if wallbrk in wall_coord:
+                        screen.blit(Bricks.images(Bricks)[1], (450 + e, 650 + i))
+                    wallbrk = pygame.Rect(450 + e, 650 + i, 30, 30)
+                    if wallbrk in wall_coord:
+                        screen.blit(Bricks.images(Bricks)[1], (450 + e, 50 + i))
 
         def draw_soviet_player(self):
             Draw_Players.draw_soviet(Draw_Players)

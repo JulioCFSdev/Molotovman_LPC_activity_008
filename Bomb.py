@@ -1,6 +1,4 @@
 import pygame
-from Config import screen
-from mobile_game_object import Draw_Players
 
 
 class Bomb:
